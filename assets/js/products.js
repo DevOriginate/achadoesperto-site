@@ -28,5 +28,35 @@ window.AE_PRODUCTS = [
       ['Recipiente de vidro', 'Visual limpo e fácil de combinar com a organização da cozinha.'],
       ['Tamanho versátil', '640 ml para refeições, porções e armazenamento.']
     ]
+  },
+  {
+    id: 'conjunto-fitness-feminino-bicolor',
+    slug: 'conjunto-fitness-feminino-bicolor',
+    name: 'Conjunto Fitness Feminino Bicolor — Top + Legging',
+    category: 'Moda Fitness Feminina',
+    tags: ['feminino','fitness','academia','roupa esportiva','legging','top','bicolor','bege','marsala'],
+    description: 'Conjunto fitness feminino com top e legging bicolor. A variação usada nas imagens do AchadoEsperto é bege com marsala, seguindo a referência do anúncio.',
+    shortDescription: 'Top + legging bicolor para academia, com visual bege e marsala.',
+    images: [
+      '/assets/img/products/conjunto-fitness-bicolor/modelo-frente.webp',
+      '/assets/img/products/conjunto-fitness-bicolor/modelo-detalhe.webp'
+    ],
+    affiliateUrl: 'https://s.shopee.com.br/9KiAKTkLQ6',
+    productUrl: '/produto/?id=conjunto-fitness-feminino-bicolor',
+    redirectUrl: 'https://s.shopee.com.br/9KiAKTkLQ6',
+    badge: 'Moda fitness feminina',
+    specs: {
+      'Peças': 'Top + legging',
+      'Estilo': 'Bicolor',
+      'Variação retratada': 'Bege com marsala',
+      'Tamanhos exibidos no anúncio': 'P 34/36 • M 38/40 • G 42 • GG 46',
+      'Categoria': 'Roupa esportiva feminina',
+      'Uso sugerido': 'Academia e treino'
+    },
+    benefits: [
+      ['Look completo', 'Top e legging combinando em uma única composição.'],
+      ['Visual bicolor', 'A combinação bege com marsala destaca o acabamento do conjunto.'],
+      ['Variações no anúncio', 'O vendedor exibe outras combinações de cores e tamanhos para conferir na Shopee.']
+    ]
   }
 ];
