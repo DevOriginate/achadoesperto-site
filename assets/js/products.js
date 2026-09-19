@@ -8,8 +8,8 @@ window.AE_PRODUCTS = [
     description: 'Pote retangular de vidro com tampa transparente, vedação azul e travas laterais. Ideal para armazenar refeições e organizar a rotina.',
     shortDescription: 'Vidro, tampa com trava e 640 ml para a rotina do dia a dia.',
     images: [
-      '/assets/img/products/pote-hermetico-640ml/frente.webp',
-      '/assets/img/products/pote-hermetico-640ml/angulo.webp'
+      'https://down-br.img.susercontent.com/file/sg-11134201-7qvfv-lk72zdcqogla64',
+      'https://down-br.img.susercontent.com/file/sg-11134201-7qvdi-lk7222t2ludhf6'
     ],
     affiliateUrl: 'https://s.shopee.com.br/5VVRUhzn0Q',
     productUrl: '/produto/pote-hermetico-640ml',
