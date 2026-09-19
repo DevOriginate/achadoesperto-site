@@ -7,7 +7,6 @@
 
   function icon(name){
     const paths = {
-      search:'<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>',
       arrow:'<path d="M5 12h14M13 6l6 6-6 6"/>',
       share:'<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4M8.6 13.5l6.8 4"/>'
     };
@@ -44,7 +43,7 @@
           <a href="${esc(p.productUrl)}" class="product-title">${esc(p.name)}</a>
           <p class="product-desc">${esc(p.shortDescription)}</p>
           <div class="product-footer">
-            <a class="primary" href="${esc(p.affiliateUrl)}" target="_blank" rel="nofollow sponsored noopener noreferrer">Ver oferta ${icon('arrow')}</a>
+            <a class="primary-btn" href="${esc(p.affiliateUrl)}" target="_blank" rel="nofollow sponsored noopener noreferrer">Ver oferta ${icon('arrow')}</a>
             <button class="icon-btn share-product" data-url="${esc(p.productUrl)}" data-title="${esc(p.name)}" aria-label="Compartilhar ${esc(p.name)}">${icon('share')}</button>
           </div>
         </div>`;
@@ -66,9 +65,9 @@
 
   function initProduct(){
     if(!location.pathname.startsWith('/produto')) return;
-    const qs=new URLSearchParams(location.search);
-    const pathSlug=location.pathname.split('/').filter(Boolean).pop();
-    const slug=qs.get('id') || qs.get('slug') || (pathSlug !== 'produto' ? pathSlug : '');
+    const params=new URLSearchParams(location.search);
+    const last=location.pathname.split('/').filter(Boolean).pop();
+    const slug=params.get('id') || params.get('slug') || (last && last!=='produto' ? last : '');
     const p=products.find(x=>x.slug===slug||x.id===slug);
     const content=$('#product-content'), notFound=$('#product-not-found'), details=$('#details-card');
     if(!p){ if(content) content.style.display='none'; if(details) details.style.display='none'; if(notFound) notFound.style.display='block'; return; }
@@ -76,7 +75,8 @@
     const descMeta=document.querySelector('meta[name="description"]'); if(descMeta) descMeta.content=p.shortDescription||p.description;
     $('#breadcrumb-category').textContent=p.category; $('#breadcrumb-name').textContent=p.name;
     $('#product-badge').textContent=`✦ ${p.badge||'AchadoEsperto'}`; $('#product-name').textContent=p.name; $('#product-description').textContent=p.description;
-    const buy=$('#buy-link'), mobile=$('#mobile-buy-link'); buy.href=p.affiliateUrl; mobile.href=p.affiliateUrl; buy.target='_blank'; mobile.target='_blank'; buy.rel='nofollow sponsored noopener noreferrer'; mobile.rel='nofollow sponsored noopener noreferrer';
+    const buy=$('#buy-link'), mobile=$('#mobile-buy-link');
+    [buy,mobile].forEach(a=>{a.href=p.affiliateUrl;a.target='_blank';a.rel='nofollow sponsored noopener noreferrer';});
     const pills=$('#spec-pills'); pills.replaceChildren(); Object.values(p.specs).slice(0,3).forEach(v=>{const span=document.createElement('span');span.className='spec-pill';span.textContent=v;pills.appendChild(span);});
     const main=$('#main-product-image'); const thumbs=$('#product-thumbs'); thumbs.replaceChildren();
     p.images.forEach((src,i)=>{ const b=document.createElement('button'); b.className='thumb'+(i===0?' active':''); b.type='button'; b.setAttribute('aria-label',`Ver imagem ${i+1}`); const img=document.createElement('img'); img.src=src; img.alt=`${p.name} – ângulo ${i+1}`; b.appendChild(img); b.addEventListener('click',()=>{main.src=src; $$('.thumb',thumbs).forEach(x=>x.classList.remove('active')); b.classList.add('active');}); thumbs.appendChild(b); });
