@@ -12,8 +12,8 @@ window.AE_PRODUCTS = [
       'https://down-br.img.susercontent.com/file/sg-11134201-7qvdi-lk7222t2ludhf6'
     ],
     affiliateUrl: 'https://s.shopee.com.br/5VVRUhzn0Q',
-    productUrl: '/produto/pote-hermetico-640ml',
-    redirectUrl: '/go/pote-hermetico-640ml',
+    productUrl: '/produto/?id=pote-hermetico-640ml',
+    redirectUrl: 'https://s.shopee.com.br/5VVRUhzn0Q',
     badge: 'Achado em destaque',
     specs: {
       'Capacidade': '640 ml',
