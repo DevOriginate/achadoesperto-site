@@ -41,8 +41,8 @@ window.AE_PRODUCTS = [
     cardPosition: 'center 32%',
     galleryFit: 'contain',
     images: [
-      '/assets/img/products/conjunto-fitness-bicolor/modelo-frente.webp',
-      '/assets/img/products/conjunto-fitness-bicolor/modelo-detalhe.webp'
+      '/assets/img/products/conjunto-fitness-bicolor/modelo-frente.webp?v=2',
+      '/assets/img/products/conjunto-fitness-bicolor/modelo-detalhe.webp?v=2'
     ],
     affiliateUrl: 'https://s.shopee.com.br/9KiAKTkLQ6',
     productUrl: '/produto/?id=conjunto-fitness-feminino-bicolor',
