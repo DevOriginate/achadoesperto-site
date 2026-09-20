@@ -81,9 +81,12 @@
     [buy,mobile].forEach(a=>{a.href=p.affiliateUrl;a.target='_blank';a.rel='nofollow sponsored noopener noreferrer';});
     const pills=$('#spec-pills'); pills.replaceChildren(); Object.values(p.specs).slice(0,3).forEach(v=>{const span=document.createElement('span');span.className='spec-pill';span.textContent=v;pills.appendChild(span);});
     const main=$('#main-product-image'); const thumbs=$('#product-thumbs'); thumbs.replaceChildren();
-    p.images.forEach((src,i)=>{ const b=document.createElement('button'); b.className='thumb'+(i===0?' active':''); b.type='button'; b.setAttribute('aria-label',`Ver imagem ${i+1}`); const img=document.createElement('img'); img.src=src; img.alt=`${p.name} – ângulo ${i+1}`; img.loading='lazy'; img.decoding='async'; b.appendChild(img); b.addEventListener('click',()=>{main.src=src; $$('.thumb',thumbs).forEach(x=>x.classList.remove('active')); b.classList.add('active');}); thumbs.appendChild(b); });
-    main.src=p.images[0]; main.alt=p.name; main.decoding='async'; main.style.objectFit=p.galleryFit||'contain';
-    main.addEventListener('error',()=>{main.alt='Imagem indisponível';main.classList.add('image-load-error');},{once:true});
+    const setMainImage=(src)=>{main.classList.remove('image-load-error');main.alt=p.name;main.src=src;};
+    main.decoding='async'; main.style.objectFit=p.galleryFit||'contain';
+    main.addEventListener('load',()=>main.classList.remove('image-load-error'));
+    main.addEventListener('error',()=>{main.alt='Imagem indisponível';main.classList.add('image-load-error');});
+    p.images.forEach((src,i)=>{ const b=document.createElement('button'); b.className='thumb'+(i===0?' active':''); b.type='button'; b.setAttribute('aria-label',`Ver imagem ${i+1}`); const img=document.createElement('img'); img.src=src; img.alt=`${p.name} – ângulo ${i+1}`; img.loading='lazy'; img.decoding='async'; img.addEventListener('error',()=>b.classList.add('thumb-error')); b.appendChild(img); b.addEventListener('click',()=>{setMainImage(src); $('.thumb',thumbs).forEach(x=>x.classList.remove('active')); b.classList.add('active');}); thumbs.appendChild(b); });
+    if(p.images.length) setMainImage(p.images[0]);
     const spec=$('#spec-table tbody'); spec.replaceChildren(); Object.entries(p.specs).forEach(([k,v])=>{ const tr=document.createElement('tr'); const td1=document.createElement('td'), td2=document.createElement('td'), strong=document.createElement('strong'); td1.textContent=k; strong.textContent=v; td2.appendChild(strong); tr.append(td1,td2); spec.appendChild(tr); });
     const benefits=$('#benefits'); benefits.replaceChildren(); p.benefits.forEach(([title,txt])=>{ const d=document.createElement('div'); d.className='benefit'; const i=document.createElement('i'); i.textContent='✓'; const wrap=document.createElement('div'); const strong=document.createElement('strong'); strong.textContent=title; const span=document.createElement('span'); span.textContent=txt; wrap.append(strong,span); d.append(i,wrap); benefits.appendChild(d); });
     $$('.share-current').forEach(btn=>btn.addEventListener('click',()=>share(location.href,p.name)));
