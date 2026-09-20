@@ -36,7 +36,7 @@
       a.innerHTML = `
         <a class="product-media" href="${esc(p.productUrl)}" aria-label="Ver ${esc(p.name)}">
           <span class="badge">${esc(p.badge)}</span>
-          <img src="${esc(p.images[0])}" alt="${esc(p.name)}" loading="lazy" width="800" height="600">
+          <img class="product-card-image" src="${esc(p.images[0])}" alt="${esc(p.name)}" loading="lazy" decoding="async" width="800" height="600" style="object-fit:${esc(p.cardFit||'contain')};object-position:${esc(p.cardPosition||'center')}">
         </a>
         <div class="product-body">
           <span class="product-cat">${esc(p.category)}</span>
@@ -47,6 +47,8 @@
             <button class="icon-btn share-product" data-url="${esc(p.productUrl)}" data-title="${esc(p.name)}" aria-label="Compartilhar ${esc(p.name)}">${icon('share')}</button>
           </div>
         </div>`;
+      const cardImg=a.querySelector('.product-card-image');
+      if(cardImg){cardImg.addEventListener('error',()=>{a.classList.add('image-error');cardImg.remove();});}
       grid.appendChild(a);
     });
     const empty=$('#empty-state'); if(empty) empty.style.display = list.length ? 'none':'block';
@@ -79,8 +81,9 @@
     [buy,mobile].forEach(a=>{a.href=p.affiliateUrl;a.target='_blank';a.rel='nofollow sponsored noopener noreferrer';});
     const pills=$('#spec-pills'); pills.replaceChildren(); Object.values(p.specs).slice(0,3).forEach(v=>{const span=document.createElement('span');span.className='spec-pill';span.textContent=v;pills.appendChild(span);});
     const main=$('#main-product-image'); const thumbs=$('#product-thumbs'); thumbs.replaceChildren();
-    p.images.forEach((src,i)=>{ const b=document.createElement('button'); b.className='thumb'+(i===0?' active':''); b.type='button'; b.setAttribute('aria-label',`Ver imagem ${i+1}`); const img=document.createElement('img'); img.src=src; img.alt=`${p.name} – ângulo ${i+1}`; b.appendChild(img); b.addEventListener('click',()=>{main.src=src; $$('.thumb',thumbs).forEach(x=>x.classList.remove('active')); b.classList.add('active');}); thumbs.appendChild(b); });
-    main.src=p.images[0]; main.alt=p.name;
+    p.images.forEach((src,i)=>{ const b=document.createElement('button'); b.className='thumb'+(i===0?' active':''); b.type='button'; b.setAttribute('aria-label',`Ver imagem ${i+1}`); const img=document.createElement('img'); img.src=src; img.alt=`${p.name} – ângulo ${i+1}`; img.loading='lazy'; img.decoding='async'; b.appendChild(img); b.addEventListener('click',()=>{main.src=src; $$('.thumb',thumbs).forEach(x=>x.classList.remove('active')); b.classList.add('active');}); thumbs.appendChild(b); });
+    main.src=p.images[0]; main.alt=p.name; main.decoding='async'; main.style.objectFit=p.galleryFit||'contain';
+    main.addEventListener('error',()=>{main.alt='Imagem indisponível';main.classList.add('image-load-error');},{once:true});
     const spec=$('#spec-table tbody'); spec.replaceChildren(); Object.entries(p.specs).forEach(([k,v])=>{ const tr=document.createElement('tr'); const td1=document.createElement('td'), td2=document.createElement('td'), strong=document.createElement('strong'); td1.textContent=k; strong.textContent=v; td2.appendChild(strong); tr.append(td1,td2); spec.appendChild(tr); });
     const benefits=$('#benefits'); benefits.replaceChildren(); p.benefits.forEach(([title,txt])=>{ const d=document.createElement('div'); d.className='benefit'; const i=document.createElement('i'); i.textContent='✓'; const wrap=document.createElement('div'); const strong=document.createElement('strong'); strong.textContent=title; const span=document.createElement('span'); span.textContent=txt; wrap.append(strong,span); d.append(i,wrap); benefits.appendChild(d); });
     $$('.share-current').forEach(btn=>btn.addEventListener('click',()=>share(location.href,p.name)));
