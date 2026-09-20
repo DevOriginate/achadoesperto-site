@@ -37,6 +37,9 @@ window.AE_PRODUCTS = [
     tags: ['feminino','fitness','academia','roupa esportiva','legging','top','bicolor','bege','marsala'],
     description: 'Conjunto fitness feminino com top e legging bicolor. A variação usada nas imagens do AchadoEsperto é bege com marsala, seguindo a referência do anúncio.',
     shortDescription: 'Top + legging bicolor para academia, com visual bege e marsala.',
+    cardFit: 'cover',
+    cardPosition: 'center 32%',
+    galleryFit: 'contain',
     images: [
       '/assets/img/products/conjunto-fitness-bicolor/modelo-frente.webp',
       '/assets/img/products/conjunto-fitness-bicolor/modelo-detalhe.webp'
