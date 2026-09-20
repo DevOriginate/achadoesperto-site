@@ -61,5 +61,37 @@ window.AE_PRODUCTS = [
       ['Visual bicolor', 'A combinação bege com marsala destaca o acabamento do conjunto.'],
       ['Variações no anúncio', 'O vendedor exibe outras combinações de cores e tamanhos para conferir na Shopee.']
     ]
+  },
+  {
+    id: 'jogo-chave-catraca-40-46-pecas',
+    slug: 'jogo-chave-catraca-40-46-pecas',
+    name: 'Jogo de Chave Catraca com Maleta — 40/46 Peças',
+    category: 'Ferramentas e Automotivo',
+    tags: ['ferramentas','automotivo','carro','chave catraca','soquetes','maleta','reparo','oficina','40 peças','46 peças'],
+    description: 'Jogo de ferramentas com chave catraca, soquetes e acessórios organizados em maleta. O anúncio oferece versões com 40 ou 46 peças para diferentes necessidades de reparo.',
+    shortDescription: 'Catraca, soquetes e acessórios em maleta, com opções de 40 ou 46 peças.',
+    cardFit: 'contain',
+    cardPosition: 'center',
+    galleryFit: 'contain',
+    images: [
+      'https://down-br.img.susercontent.com/file/br-11134207-820l9-mqt86n8incape7'
+    ],
+    affiliateUrl: 'https://s.shopee.com.br/9peSE9SHk2',
+    productUrl: '/produto/?id=jogo-chave-catraca-40-46-pecas',
+    redirectUrl: 'https://s.shopee.com.br/9peSE9SHk2',
+    badge: 'Ferramentas & Automotivo',
+    specs: {
+      'Versões': '40 ou 46 peças',
+      'Tipo': 'Jogo de chave catraca e soquetes',
+      'Organização': 'Maleta para armazenamento',
+      'Categoria': 'Ferramentas e automotivo',
+      'Uso indicado': 'Reparos gerais e automotivos',
+      'Observação': 'A composição pode variar conforme a opção escolhida'
+    },
+    benefits: [
+      ['Tudo organizado', 'A maleta mantém catraca, soquetes e acessórios reunidos para facilitar o uso.'],
+      ['Uso versátil', 'Conjunto pensado para pequenos reparos, manutenção e uso automotivo.'],
+      ['Escolha de versão', 'O anúncio oferece opções de 40 ou 46 peças; confira a composição da variação antes da compra.']
+    ]
   }
 ];
